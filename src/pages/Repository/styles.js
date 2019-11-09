@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Loading = styled.div`
   color: #fff;
@@ -39,6 +39,64 @@ export const Owner = styled.header`
     line-height: 1.6;
     text-align: center;
     max-width: 400px;
+  }
+`;
+
+const definition = index => {
+  if (index === 0) {
+    return css`
+      background: #00bfff;
+    `;
+  }
+  if (index === 1) {
+    return css`
+      background: #90ee90;
+    `;
+  }
+  return css`
+    background: #ff6b6b;
+  `;
+};
+
+export const IssueState = styled.div`
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    padding: 5px;
+    border-radius: 4px;
+    border: 0;
+
+    & + button {
+      margin-left: 10px;
+    }
+
+    &:nth-child(${props => props.active + 1}) {
+      ${props => props.active + 1 && definition(props.active)}
+    }
+
+    &:nth-child(1) {
+      &:hover {
+        background: #00bfff;
+        transition: background 0.25s ease-out;
+      }
+    }
+
+    &:nth-child(2) {
+      &:hover {
+        background: #90ee90;
+        transition: background 0.25s ease-out;
+      }
+    }
+
+    &:nth-child(3) {
+      &:hover {
+        background: #ff6b6b;
+        transition: background 0.25s ease-out;
+      }
+    }
   }
 `;
 
@@ -99,5 +157,37 @@ export const IssueList = styled.ul`
       font-size: 12px;
       color: #999;
     }
+  }
+`;
+
+export const IssuePage = styled.div`
+  margin-top: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    padding: 10px;
+    border-radius: 4px;
+    border: 0;
+    font-weight: bold;
+
+    &:hover {
+      background: #7159c1;
+      transition: background 0.25s ease-out;
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+  }
+
+  p {
+    color: #000;
+    margin: 0 20px;
+    font-size: 12px;
+    font-weight: bold;
   }
 `;
