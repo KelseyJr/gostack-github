@@ -80,7 +80,7 @@ export default class Main extends Component {
             <li key={repository.name}>
               <span>{repository.name}</span>
               <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
-                Detlhes
+                Detalhes
               </Link>
             </li>
           ))}
